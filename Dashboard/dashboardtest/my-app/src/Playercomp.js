@@ -13,7 +13,7 @@ class PlayerApp extends Component {
 				<AzureMP
 					src={[
 						{
-							src: "https://515group2-usea.streaming.media.azure.net/735f7a25-0caf-46d5-893f-69f04cc48eea/08a1361e-f5a6-43bf-8a33-6bd35d859664.ism/manifest(format=m3u8-cmaf)",
+							src: "https://515group2-usea.streaming.media.azure.net/3c231927-a882-4110-b15d-8629be3482b8/1adf32ae-9dc8-45ff-bbc0-5cba72bfb1f6.ism/manifest(format=m3u8-cmaf)",
 							type: "application/vnd.ms-sstr+xml",
 						},
 					]}
