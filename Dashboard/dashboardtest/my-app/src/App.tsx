@@ -2,36 +2,14 @@ import * as React from "react";
 import {
 	ChakraProvider,
 	Box,
-	Text,
 	VStack,
 	Grid,
 	theme,
 	Heading,
-	Divider,
 } from "@chakra-ui/react";
 import { ColorModeSwitcher } from "./ColorModeSwitcher";
-import { getDatabase, ref, get, onValue } from "firebase/database";
-import firebaseApp from "./firebase.config";
-import { useEffect, useState } from "react";
 import PlayerApp from "./Playercomp";
-
-const db = getDatabase(firebaseApp);
-var test = ref(db, "firedetection");
-
-// react hooks should only be called in functional components
-const useData = () => {
-	const [data, setData] = useState([]);
-	get(test).then((snapshot) => {
-		setData(snapshot.val());
-	});
-	useEffect(() => {
-		onValue(test, (snapshot) => {
-			console.log(snapshot.val());
-			setData(snapshot.val());
-		});
-	}, []);
-	return data;
-};
+import Flamesensor from "./Flamesensor";
 
 export const App = () => (
 	<ChakraProvider theme={theme}>
@@ -39,13 +17,10 @@ export const App = () => (
 			<Grid minH="100vh" p={3}>
 				<ColorModeSwitcher justifySelf="flex-end" />
 				<VStack spacing={8}>
-					<Heading>
-						<Text fontSize="4xl">Fire Detection Dashboard</Text>
+					<Flamesensor />
+					<Heading as="h1" size="lg" mb={4}>
+						Live feed from Raspberry Pi:
 					</Heading>
-					<Divider />
-					<Text fontSize="3xl" fontWeight="bold">
-						Fire Sensor: {useData()}
-					</Text>
 					<PlayerApp />
 				</VStack>
 			</Grid>
