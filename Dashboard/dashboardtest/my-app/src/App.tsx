@@ -10,20 +10,26 @@ import {
 	Divider,
 } from "@chakra-ui/react";
 import { ColorModeSwitcher } from "./ColorModeSwitcher";
-import { get, getDatabase, ref } from "firebase/database";
+import { getDatabase, ref, get, onValue } from "firebase/database";
 import firebaseApp from "./firebase.config";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PlayerApp from "./Playercomp";
 
 const db = getDatabase(firebaseApp);
-const test = ref(db, "firedetection");
+var test = ref(db, "firedetection");
 
 // react hooks should only be called in functional components
 const useData = () => {
-	const [data, setData] = useState("");
+	const [data, setData] = useState([]);
 	get(test).then((snapshot) => {
 		setData(snapshot.val());
 	});
+	useEffect(() => {
+		onValue(test, (snapshot) => {
+			console.log(snapshot.val());
+			setData(snapshot.val());
+		});
+	}, []);
 	return data;
 };
 
@@ -46,3 +52,5 @@ export const App = () => (
 		</Box>
 	</ChakraProvider>
 );
+
+export default App;
