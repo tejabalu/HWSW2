@@ -1,7 +1,13 @@
 import { getDatabase, ref, get, onValue } from "firebase/database";
 import firebaseApp from "./firebase.config";
 import { useEffect, useState } from "react";
-import { ChakraProvider, Divider, Heading, Text } from "@chakra-ui/react";
+import {
+	ChakraProvider,
+	Divider,
+	Heading,
+	Text,
+	theme,
+} from "@chakra-ui/react";
 
 const db = getDatabase(firebaseApp);
 var test = ref(db, "firedetection");
@@ -24,7 +30,7 @@ const useData = () => {
 export const Flamesensor = () => {
 	const data = useData();
 	return (
-		<ChakraProvider>
+		<ChakraProvider theme={theme}>
 			<Heading>
 				<Text fontSize="4xl">Fire Detection Dashboard</Text>
 			</Heading>

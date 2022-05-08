@@ -6,10 +6,13 @@ import {
 	Grid,
 	theme,
 	Heading,
+	HStack,
 } from "@chakra-ui/react";
 import { ColorModeSwitcher } from "./ColorModeSwitcher";
-import PlayerApp from "./Playercomp";
 import Flamesensor from "./Flamesensor";
+import FLIRImage from "./components/FLIRImage";
+import OpticalImage from "./components/OpticalImage";
+import ColoredFLIRImage from "./components/ColoredFLIRImage";
 
 export const App = () => (
 	<ChakraProvider theme={theme}>
@@ -21,7 +24,11 @@ export const App = () => (
 					<Heading as="h1" size="lg" mb={4}>
 						Live feed from Raspberry Pi:
 					</Heading>
-					<PlayerApp />
+					<HStack>
+						<OpticalImage />
+						<FLIRImage />
+						<ColoredFLIRImage />
+					</HStack>
 				</VStack>
 			</Grid>
 		</Box>
