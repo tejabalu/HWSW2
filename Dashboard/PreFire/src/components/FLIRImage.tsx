@@ -25,8 +25,9 @@ export const FLIRImage = () => {
 		<Box>
 			<Image
 				src={"data:image/png;base64, " + data.toString()}
-				htmlHeight="500px"
-				htmlWidth="500px"
+				htmlHeight="340px"
+				htmlWidth="340px"
+				transform={`rotate(270deg)`}
 			/>
 		</Box>
 	);

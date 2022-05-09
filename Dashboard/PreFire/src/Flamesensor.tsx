@@ -36,7 +36,7 @@ export const Flamesensor = () => {
 			</Heading>
 			<Divider />
 			<Text fontSize="3xl" fontWeight="bold">
-				Fire Sensor: {data}
+				Fire Status: {data}
 			</Text>
 		</ChakraProvider>
 	);
